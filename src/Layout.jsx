@@ -1,3 +1,4 @@
+import Logo from "./components/Logo";
 import { Link, Outlet } from "react-router-dom";
 
 export default function Layout() {
@@ -5,9 +6,8 @@ export default function Layout() {
     <div style={{ fontFamily: "system-ui", maxWidth: 1200, margin: "0 auto", padding: 24 }}>
       <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 32 }}>
         <div>
-          <h2 style={{ margin: 0 }}>Veluxo LLC</h2>
-          <p style={{ margin: 0, opacity: 0.7 }}>Premium Products. Smart Solutions.</p>
-        </div>
+          <Logo />
+
 
         <nav style={{ display: "flex", gap: 16 }}>
           <Link to="/">Home</Link>

@@ -1,158 +1,175 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import EmailCapture from '../components/EmailCapture';
 
 export default function Home() {
-  const buttonBase = {
-    padding: '0.875rem 1.75rem',
-    borderRadius: '8px',
-    fontWeight: 600,
-    fontSize: '1rem',
-    display: 'inline-block',
-    textDecoration: 'none'
-  };
-
-  const primaryBtn = {
-    ...buttonBase,
-    backgroundColor: 'var(--accent)',
-    color: '#fff',
-    border: 'none',
-  };
-
-  const secondaryBtn = {
-    ...buttonBase,
-    backgroundColor: '#fff',
-    color: 'var(--text-dark)',
-    border: '1px solid var(--border)',
-  };
-
-  const sectionStyle = {
-    padding: '5rem 1.5rem',
-    maxWidth: '1200px',
-    margin: '0 auto'
-  };
-
   return (
     <div>
-      {/* Hero Section */}
+      {/* HERO SECTION */}
       <section style={{
+        position: 'relative',
+        padding: '8rem 0 6rem',
         textAlign: 'center',
-        padding: '8rem 1.5rem',
-        backgroundColor: 'var(--bg-secondary)',
-        marginBottom: '2rem'
+        overflow: 'hidden'
       }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h1 style={{
-            fontSize: '3.5rem',
-            lineHeight: 1.1,
-            fontWeight: 800,
-            marginBottom: '1.5rem',
-            letterSpacing: '-0.02em'
-          }}>
-            Premium Essentials for <br />
-            <span style={{ color: 'var(--accent)' }}>Modern Living</span>
-          </h1>
-          <p style={{
-            fontSize: '1.25rem',
-            opacity: 0.7,
-            marginBottom: '2.5rem',
-            maxWidth: '600px',
-            marginLeft: 'auto',
-            marginRight: 'auto'
-          }}>
-            Veluxo brings you a curated collection of high-quality products designed to elevate your everyday experience.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            <Link to="/shop" style={primaryBtn}>Shop Now</Link>
-            <Link to="/stores" style={secondaryBtn}>View Stores</Link>
+        {/* Background Glow */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)',
+          opacity: 0.4,
+          zIndex: -1,
+          filter: 'blur(60px)'
+        }} />
+
+        <div className="container">
+          <div className="animate-fade-up">
+            <div style={{
+              display: 'inline-block',
+              padding: '0.25rem 0.75rem',
+              borderRadius: '99px',
+              border: '1px solid rgba(255,255,255,0.1)',
+              background: 'rgba(255,255,255,0.05)',
+              color: 'var(--muted)',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              marginBottom: '1.5rem'
+            }}>
+              Coming Soon
+            </div>
+
+            <h1 style={{
+              fontSize: 'clamp(3rem, 6vw, 5rem)',
+              fontWeight: 800,
+              lineHeight: 1.1,
+              marginBottom: '1.5rem',
+              backgroundImage: 'linear-gradient(to bottom right, #ffffff, #94a3b8)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>
+              Designed for Order.
+            </h1>
+            <p style={{
+              fontSize: '1.25rem',
+              color: 'var(--muted)',
+              maxWidth: '600px',
+              margin: '0 auto 2.5rem',
+              lineHeight: 1.6
+            }}>
+              Premium organization and curated essentials. Launching soon.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+              <EmailCapture />
+              <a href="#featured" className="btn btnGhost" style={{ marginTop: '0.5rem' }}>View Featured Product</a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Feature Cards */}
-      <section style={sectionStyle}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '2rem'
-        }}>
-          {[
-            { title: 'Premium Quality', desc: 'Crafted with materials that stand the test of time.' },
-            { title: 'Fast Shipping', desc: 'Free expedited shipping on all domestic orders.' },
-            { title: 'Smart Selection', desc: 'Curated products that actually add value to your life.' }
-          ].map((item, i) => (
-            <div key={i} style={{
-              padding: '2rem',
-              borderRadius: '16px',
-              border: '1px solid var(--border)',
-              backgroundColor: '#fff'
+      {/* FEATURED PRODUCT */}
+      <section id="featured" className="section" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 className="animate-fade-up" style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Featured Product</h2>
+          </div>
+
+          <div className="card animate-fade-up animate-delay-1" style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            background: 'var(--bg2)',
+            border: '1px solid var(--border)'
+          }}>
+            {/* Image Side */}
+            <div style={{
+              flex: '1 1 400px',
+              minHeight: '400px',
+              background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRight: '1px solid var(--border)',
+              position: 'relative'
             }}>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{item.title}</h3>
-              <p style={{ opacity: 0.7 }}>{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section style={{ ...sectionStyle, backgroundColor: 'var(--bg-secondary)', borderRadius: '24px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 700 }}>How It Works</h2>
-          <p style={{ opacity: 0.7 }}>Simple, transparent, and efficient.</p>
-        </div>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '3rem',
-          textAlign: 'center'
-        }}>
-          {[
-            { step: '01', title: 'Browse', text: 'Explore our catalog of premium goods.' },
-            { step: '02', title: 'Select', text: 'Choose your favorite items securely.' },
-            { step: '03', title: 'Enjoy', text: 'Fast delivery to your doorstep.' }
-          ].map((s) => (
-            <div key={s.step}>
               <div style={{
-                width: '60px',
-                height: '60px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--accent)',
-                color: '#fff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.25rem',
-                fontWeight: 'bold',
-                margin: '0 auto 1.5rem'
+                color: 'rgba(255,255,255,0.2)',
+                fontSize: '1.2rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                textAlign: 'center',
+                padding: '2rem'
               }}>
-                {s.step}
+                Product Image<br />Placeholder
               </div>
-              <h3 style={{ marginBottom: '0.75rem' }}>{s.title}</h3>
-              <p style={{ opacity: 0.7 }}>{s.text}</p>
+              <div style={{
+                position: 'absolute',
+                bottom: '1.5rem',
+                right: '1.5rem',
+                opacity: 0.3
+              }}>
+                <span style={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em' }}>VELUXO</span>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* Newsletter */}
-      <section style={{ ...sectionStyle, textAlign: 'center', padding: '6rem 1.5rem' }}>
-        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Stay in the Loop</h2>
-        <p style={{ opacity: 0.7, marginBottom: '2rem' }}>Subscribe for exclusive offers and new product drops.</p>
-        <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', gap: '0.75rem', maxWidth: '400px', margin: '0 auto' }}>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            style={{
-              flex: 1,
-              padding: '0.875rem',
-              borderRadius: '8px',
-              border: '1px solid var(--border)',
-              fontSize: '1rem',
-              outline: 'none'
-            }}
-          />
-          <button style={primaryBtn}>Subscribe</button>
-        </form>
+            {/* Details Side */}
+            <div style={{ flex: '1 1 400px', padding: '3rem' }}>
+              <h3 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Acrylic Organizer</h3>
+              <p style={{ color: 'var(--muted)', fontSize: '1.1rem', marginBottom: '2rem' }}>3 Drawer Edition</p>
+
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: '0 0 2rem 0',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.75rem',
+                color: 'var(--text)'
+              }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ color: 'var(--accent)' }}>—</span> 3-drawer vertical organizer
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ color: 'var(--accent)' }}>—</span> Matte black body
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ color: 'var(--accent)' }}>—</span> Clear hinged top compartment
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ color: 'var(--accent)' }}>—</span> Premium 3mm acrylic
+                </li>
+              </ul>
+
+              <div style={{
+                padding: '1.25rem',
+                background: 'rgba(255,255,255,0.03)',
+                borderRadius: '8px',
+                marginBottom: '2.5rem',
+                fontSize: '0.9rem',
+                color: 'var(--muted)',
+                border: '1px solid rgba(255,255,255,0.05)'
+              }}>
+                <strong style={{ color: 'var(--text)', display: 'block', marginBottom: '0.75rem', fontSize: '1rem' }}>Dimensions</strong>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                  <div>Height: 13–14 inches</div>
+                  <div>Width: 9.5–10 inches</div>
+                  <div>Depth: 7–8 inches</div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <button className="btn btnPrimary" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Get Launch Updates</button>
+                <button className="btn btnGhost">Request Specs</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
